@@ -21,6 +21,15 @@ that polls delivery status after certain interval.
 3.  Create a camel router by extending RouteBuilder class.
 	- Here we need to provide a configue() function which specifies refresh interval, delay interval
 	   and the process that you want to execute in that router.
+	 
+	 ```
+	 public void configure() throws Exception {
+
+		from("timer:pollDeliveryStatusRoute?period=" + properties.getRefreshInterval()).autoStartup(true)
+				.routeId(ROUTE_NAME).delay(properties.getRefreshStartUpDelay()).process(processor);
+
+	}
+	```
 
 4. To ensure the application keeps running until stopped (it it's an standalone application),
 	add the following property in application.properties file
