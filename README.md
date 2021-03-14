@@ -30,6 +30,17 @@ that polls delivery status after certain interval.
 
 	}
 	```
+	
+4. Create a processor function or a processor class
+
+```
+	@Override
+	public void process(Exchange exchange) throws Exception {
+		log.info("Polling started.......");
+		pollDeliveryService.poll();    //perform the service
+		log.info("Polling completed......");
+	}
+	```
 
 4. To ensure the application keeps running until stopped (it it's an standalone application),
 	add the following property in application.properties file
