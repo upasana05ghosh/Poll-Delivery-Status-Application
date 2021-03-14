@@ -28,6 +28,10 @@ that polls delivery status after certain interval.
 	```
 	camel.springboot.main-run-controller = true
 	```
+	
+5. Output of the application:
+![Output of the application](https://github.com/upasana05ghosh/Poll-Delivery-Status-Application/blob/main/ApplicationOutput.png)
+
 
 ### Reference
 https://camel.apache.org/camel-spring-boot/latest/
