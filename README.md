@@ -11,7 +11,7 @@ that polls delivery status after certain interval.
 2. Add dependecy of Apache camel or we can add it in pom.xml too if it's a maven project
 
 ```
-	<dependency>
+    <dependency>
         <groupId>org.apache.camel</groupId>
         <artifactId>camel-spring-boot-starter</artifactId>
         <version>2.22.0</version>
@@ -22,14 +22,14 @@ that polls delivery status after certain interval.
 	- Here we need to provide a configue() function which specifies refresh interval, delay interval
 	   and the process that you want to execute in that router.
 	 
-	 ```
+```
 	 public void configure() throws Exception {
 
 		from("timer:pollDeliveryStatusRoute?period=" + properties.getRefreshInterval()).autoStartup(true)
 				.routeId(ROUTE_NAME).delay(properties.getRefreshStartUpDelay()).process(processor);
 
 	}
-	```
+```
 	
 4. Create a processor function or a processor class
 
@@ -40,16 +40,16 @@ that polls delivery status after certain interval.
 		pollDeliveryService.poll();    //perform the service
 		log.info("Polling completed......");
 	}
-	```
+```
 
-4. To ensure the application keeps running until stopped (it it's an standalone application),
+5. To ensure the application keeps running until stopped (it it's an standalone application),
 	add the following property in application.properties file
 	
 	```
 	camel.springboot.main-run-controller = true
 	```
 	
-5. Output of the application:
+6. Output of the application:
 ![Output of the application](https://github.com/upasana05ghosh/Poll-Delivery-Status-Application/blob/main/ApplicationOutput.png)
 
 
